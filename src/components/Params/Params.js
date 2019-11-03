@@ -7,7 +7,7 @@ import ParamsWithHelp from './ParamsWithHelper'
 import ToolIcon from '../Icons/Tool'
 
 const TogglerWrapper = styled.div`
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
 `
 
 const Wrapper = styled.aside`
