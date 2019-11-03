@@ -15,7 +15,6 @@ const ParamsWithHelper = styled.div`
 `
 
 const ParamsWithHelperComp = ({ withHelper, setWithHelper }) => {
-  console.log(withHelper)
   return (
     <ParamsWithHelper
       onClick={() => setWithHelper(!withHelper)}

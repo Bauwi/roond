@@ -1,3 +1,12 @@
+# Roond
+
+Recursion exercise - Update and display splittable circles through a React app
+
+## Libs
+
+React
+React-spring
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

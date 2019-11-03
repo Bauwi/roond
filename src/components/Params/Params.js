@@ -54,7 +54,6 @@ const ParamsComp = ({
   const { transform, transformOrigin } = useSpring({
     transform: `perspective(${perspective}) scale(${toggle ? 1.3 : 1})`,
     transformOrigin: '100% 0%',
-    // config: { mass: 10, tension: 200, friction: 80 }
     config: { mass: 3, tension: 200, friction: 20 }
   })
   return (
