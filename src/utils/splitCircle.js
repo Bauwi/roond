@@ -1,19 +1,23 @@
-export const splitCircle = (circles, id) =>
+export const splitCircle = (circles, id, occurences) =>
   circles.map(circle => {
     if (circle.id === id) {
       return {
         ...circle,
-        children: [
-          { id: `${id}1`, children: [] },
-          { id: `${id}2`, children: [] }
-        ]
+        // children: [
+        //   { id: `${id}1`, children: [] },
+        //   { id: `${id}2`, children: [] }
+        // ],
+        children: new Array(occurences).fill().map((child, i) => ({
+          id: `${id}${i}`,
+          children: []
+        }))
       }
     }
 
     if (!!circle.children.length) {
       return {
         ...circle,
-        children: splitCircle(circle.children, id)
+        children: splitCircle(circle.children, id, occurences)
       }
     }
     return circle
@@ -42,4 +46,4 @@ const circles = [
   }
 ]
 
-JSON.stringify(splitCircle(circles, '21'))
+// JSON.stringify(splitCircle(circles, '21'))

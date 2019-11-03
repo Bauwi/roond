@@ -26,44 +26,19 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: ${p => (p.circle.id.length % 2 !== 0 ? 'row' : 'column')};
-  /* border: 2px solid
+  border: 2px solid
     ${p =>
-      containersColors.find(col => col.level === p.circle.id.length).color}; */
+      p.withHelper
+        ? containersColors.find(col => col.level === p.circle.id.length).color
+        : 'transparent'};
   border-radius: 50%;
-  /* height: 100%; */
 `
 
-const initial = [
-  {
-    id: '1',
-    children: [
-      {
-        id: '11',
-        children: [{ id: '111', children: [] }, { id: '112', children: [] }]
-      },
-      { id: '12', children: [] }
-    ]
-  },
-  {
-    id: '2',
-    children: [
-      {
-        id: '21',
-        children: [{ id: '211', children: [] }, { id: '212', children: [] }]
-      },
-      {
-        id: '22',
-        children: [{ id: '221', children: [] }, { id: '222', children: [] }]
-      }
-    ]
-  }
-]
-const CirclesComp = () => {
+const CirclesComp = ({ occurences, withHelper }) => {
   const [circles, updateCircles] = useState([{ id: '1', children: [] }])
 
   const handleClick = id => {
-    const result = splitCircle(circles, id)
-    console.log(result)
+    const result = splitCircle(circles, id, occurences)
     updateCircles(result)
   }
 
@@ -75,7 +50,7 @@ const CirclesComp = () => {
         )
       }
       return (
-        <Container key={circle.id} circle={circle}>
+        <Container key={circle.id} circle={circle} withHelper={withHelper}>
           {renderCircles(circle.children)}
         </Container>
       )
